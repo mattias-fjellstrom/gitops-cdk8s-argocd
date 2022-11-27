@@ -7,6 +7,8 @@ on:
 env:
   ARTIFACT_NAME: manifests
 
+permissions: write-all
+
 jobs:
   build-k8s-manifests:
     runs-on: ubuntu-latest
