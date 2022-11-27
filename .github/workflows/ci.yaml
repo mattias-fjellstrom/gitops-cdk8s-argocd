@@ -25,7 +25,7 @@ jobs:
           repository: mattias-fjellstrom/gitops-cdk8s-argocd-manifests
           path: gitops-cdk8s-argocd-manifests
       - run: |
-          cp dist/**.yaml gitops-cdk8s-argocd-manifests
+          cp ./dist/**.yaml /gitops-cdk8s-argocd-manifests
           ls -a
           ls -a gitops-cdk8s-argocd-manifests
         working-directory: gitops-cdk8s-argocd
