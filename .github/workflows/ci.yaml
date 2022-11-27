@@ -25,6 +25,7 @@ jobs:
 
   commit-to-gitops-repo:
     runs-on: ubuntu-latest
+    needs: build-k8s-manifests
     steps:
       - uses: actions/checkout@v3
         with:
