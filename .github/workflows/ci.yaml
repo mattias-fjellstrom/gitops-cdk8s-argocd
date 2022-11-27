@@ -28,6 +28,8 @@ jobs:
   commit-to-gitops-repo:
     runs-on: ubuntu-latest
     needs: build-k8s-manifests
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITOPS_REPO_PAT }}
     steps:
       - uses: actions/checkout@v3
         with:
