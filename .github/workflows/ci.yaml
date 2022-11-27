@@ -24,3 +24,7 @@ jobs:
         with:
           repository: mattias-fjellstrom/gitops-cdk8s-argocd-manifests
           path: gitops-cdk8s-argocd-manifests
+      - run: cp dist/**.yaml gitops-cdk8s-argocd-manifests
+        working-directory: gitops-cdk8s-argocd
+      - run: git add . && git commit -m "Update manifests" && git push
+        working-directory: gitops-cdk8s-argocd-manifests
