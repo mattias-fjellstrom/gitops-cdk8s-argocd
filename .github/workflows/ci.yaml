@@ -27,7 +27,7 @@ jobs:
       - run: |
           cp dist/**.yaml gitops-cdk8s-argocd-manifests
           ls -a
-          la -a gitops-cdk8s-argocd-manifests
+          ls -a gitops-cdk8s-argocd-manifests
         working-directory: gitops-cdk8s-argocd
       - run: |
           git config --global user.email "${{ github.actor }}@example.com"
