@@ -25,10 +25,8 @@ jobs:
           repository: mattias-fjellstrom/gitops-cdk8s-argocd-manifests
           path: gitops-cdk8s-argocd-manifests
       - run: |
-          cp ./dist/* /gitops-cdk8s-argocd-manifests/
-          ls -a
-          ls -a gitops-cdk8s-argocd-manifests
-        working-directory: gitops-cdk8s-argocd
+          cp ../gitops-cdk8s-argocd/dist/* .
+        working-directory: gitops-cdk8s-argocd-manifests
       - run: |
           git config --global user.email "${{ github.actor }}@example.com"
           git config --global user.name "${{ github.actor }}"
