@@ -4,13 +4,14 @@ on:
       - "main"
       - "chore/**"
 
+env:
+  ARTIFACT_NAME: manifests
+
 jobs:
   build-k8s-manifests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-        with:
-          path: gitops-cdk8s-argocd
       - run: yarn global add cdk8s-cli
         working-directory: gitops-cdk8s-argocd
       - uses: actions/setup-go@v3
@@ -20,16 +21,21 @@ jobs:
         working-directory: gitops-cdk8s-argocd
       - run: cdk8s synth
         working-directory: gitops-cdk8s-argocd
+      - uses: actions/upload-artifact@v3
+        with:
+          name: ${{ env.ARTIFACT_NAME }}
+          path: dist/
+
+  commit-to-gitops-repo:
+    runs-on: ubuntu-latest
+    steps:
       - uses: actions/checkout@v3
         with:
           repository: mattias-fjellstrom/gitops-cdk8s-argocd-manifests
-          path: gitops-cdk8s-argocd-manifests
-      - run: |
-          cp ../gitops-cdk8s-argocd/dist/* .
-        working-directory: gitops-cdk8s-argocd-manifests
+      - uses: actions/download-artifact@v3
+        with:
+          name: ${{ env.ARTIFACT_NAME }}
       - run: |
           git config --global user.email "${{ github.actor }}@example.com"
           git config --global user.name "${{ github.actor }}"
-          git config --unset-all http.https://github.com/.extraheader
           git add . && git commit -m "Update manifests" && git push
-        working-directory: gitops-cdk8s-argocd-manifests
