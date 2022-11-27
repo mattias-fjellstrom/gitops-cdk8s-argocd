@@ -30,5 +30,6 @@ jobs:
       - run: |
           git config --global user.email "${{ github.actor }}@example.com"
           git config --global user.name "${{ github.actor }}"
+          git config --unset-all http.https://github.com/.extraheader
           git add . && git commit -m "Update manifests" && git push
         working-directory: gitops-cdk8s-argocd-manifests
