@@ -13,14 +13,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: yarn global add cdk8s-cli
-        working-directory: gitops-cdk8s-argocd
       - uses: actions/setup-go@v3
         with:
           check-latest: true
       - run: cdk8s import
-        working-directory: gitops-cdk8s-argocd
       - run: cdk8s synth
-        working-directory: gitops-cdk8s-argocd
       - uses: actions/upload-artifact@v3
         with:
           name: ${{ env.ARTIFACT_NAME }}
