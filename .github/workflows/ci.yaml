@@ -27,8 +27,10 @@ jobs:
       - uses: actions/setup-go@v3
         with:
           check-latest: true
-      - run: cdk8s import
-      - run: cdk8s synth
+      - working-directory: src
+        run: cdk8s import
+      - working-directory: src
+        run: cdk8s synth
       - run: |
           mkdir -p destination/dev
           cp -rvT src/dist/ destination/dev
