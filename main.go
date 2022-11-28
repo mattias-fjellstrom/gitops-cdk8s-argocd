@@ -38,7 +38,7 @@ func NewWebsiteChart(scope constructs.Construct, id string, props *WebsiteChartP
 
 	k8s.NewKubeDeployment(chart, jsii.String("deployment"), &k8s.KubeDeploymentProps{
 		Spec: &k8s.DeploymentSpec{
-			Replicas: jsii.Number(3),
+			Replicas: jsii.Number(5),
 			Selector: &k8s.LabelSelector{
 				MatchLabels: &label,
 			},
