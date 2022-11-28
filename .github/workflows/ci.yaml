@@ -41,3 +41,4 @@ jobs:
           git config --global credential.helper cache
           git add -A
           git commit -m "bot: update from ${{ github.sha }}"
+          git push
