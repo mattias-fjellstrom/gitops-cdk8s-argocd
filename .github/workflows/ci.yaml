@@ -31,7 +31,7 @@ jobs:
         run: cdk8s synth
       - run: |
           mkdir -p destination/dev
-          cp -rvT src/dist/ destination/dev
+          cp -rvT src/dist/*.yaml destination/dev
       - working-directory: destination
         run: |
           git config --global user.name "${{ github.actor }} [bot]"
