@@ -13,12 +13,9 @@ type WebsiteChartProps struct {
 
 func NewWebsiteChart(scope constructs.Construct, id string, props *WebsiteChartProps) cdk8s.Chart {
 	var cprops cdk8s.ChartProps
-	if props != nil {
-		cprops = props.ChartProps
-	}
 	chart := cdk8s.NewChart(scope, jsii.String(id), &cprops)
 
-	label := map[string]*string{"app": jsii.String("hello-k8s")}
+	label := map[string]*string{"app": jsii.String("website")}
 
 	k8s.NewKubeService(chart, jsii.String("service"), &k8s.KubeServiceProps{
 		Spec: &k8s.ServiceSpec{

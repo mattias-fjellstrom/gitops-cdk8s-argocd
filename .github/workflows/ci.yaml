@@ -12,13 +12,11 @@ jobs:
         uses: actions/checkout@v3
         with:
           path: src
-          ref: main
           persist-credentials: false
       - name: Checkout out destination repository
         uses: actions/checkout@v3
         with:
           path: destination
-          ref: main
           repository: mattias-fjellstrom/gitops-cdk8s-argocd-manifests
           token: ${{ secrets.GITOPS_REPO_PAT }}
           fetch-depth: 0
@@ -38,7 +36,6 @@ jobs:
         run: |
           git config --global user.name "${{ github.actor }} [bot]"
           git config --global user.email "${{ github.actor }}@bot.com"
-          git config --global credential.helper cache
           git add -A
           git commit -m "bot: update from ${{ github.sha }}"
           git push
