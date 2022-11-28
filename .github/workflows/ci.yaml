@@ -36,6 +36,5 @@ jobs:
         run: |
           git config --global user.name "${{ github.actor }} [bot]"
           git config --global user.email "${{ github.actor }}@bot.com"
-          git add -A
-          git commit -m "bot: update from ${{ github.sha }}"
+          git commit --allow-empty -am "bot: update from ${{ github.sha }}"
           git push
