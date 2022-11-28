@@ -30,7 +30,7 @@ func NewWebsiteChart(scope constructs.Construct, id string, props *WebsiteChartP
 
 	cm := k8s.NewKubeConfigMap(chart, jsii.String("index.html"), &k8s.KubeConfigMapProps{
 		Data: &map[string]*string{
-			"index.html": jsii.String("<html><h1>Version 1</h1></html"),
+			"index.html": jsii.String("<html><h1>Version 2</h1></html"),
 		},
 	})
 
